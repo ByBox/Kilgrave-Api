@@ -5,6 +5,10 @@ HOST: http://kilgrave.apiblueprint.org/
 
 Alters the space-time continuum to allow packages to be delivered instantaneously.
 
+#Authentication
+
+In this documentation BEARER-TOKEN-FROM-AUTHN-API refers to the token obtained from the the ByBox Authentication API.
+
 # Group Devices
 
 ## /device/{deviceId}
@@ -17,8 +21,11 @@ Creates a new device and returns a HAL based representation of urls that must be
 
 + Request
 
-+ Parameters
-    + deviceId (string) - The unique id of the device
+    + Parameters
+        + deviceId (string) - The unique id of the device
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 201 (application/hal+json)
 
@@ -55,8 +62,11 @@ Gets a device by it's unique id
 
 + Request
 
-+ Parameters
-    + deviceId (string) - The unique id of the device
+    + Parameters
+        + deviceId (string) - The unique id of the device
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (application/hal+json)
 
@@ -81,6 +91,9 @@ Updates the device to mark it as provisioned and finalise the provisioning proce
 
 + Request
 
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
 + Response 200 (text/plain; charset=utf-8)
 
 # Group Configuration
@@ -90,6 +103,11 @@ Configuration represents the server held configuration for this system.
 ## /configuration
 
 ### Load [GET]
+
++ Request
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (application/hal+json)
 
@@ -114,7 +132,10 @@ The events endpoint is responsible for providing a means to allow a client to po
 
 + Request (application/json)
 
-        
+    + Headers
+        Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
+    + Body    
         {
           "events": [
           
@@ -135,20 +156,25 @@ Returns a collection of all entity types that have changed on the server.
 ### Get all [POST]
 
 + Request (application/json)
-
         
+    + Body
+
         {
             "site": "2016-08-20T10:45:12",
-            "distribution_centre": "2016-01-01T09:00:00",
-            "site_route": "2017-03-20T19:15:00
+            "distributionCentre": "2016-01-01T09:00:00",
+            "siteRoute": "2017-03-20T19:15:00
         }
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
 
 + Response 200 (application/json)
 
         [
             {
                 "site": "/api/changes/site/2016-08-20T10:45:12",
-                "distribution_centre": "/api/changes/site/2016-01-01T09:00:00"
+                "distributionCentre": "/api/changes/distributionCentre/2016-01-01T09:00:00"
             } 
         ]
         
@@ -158,10 +184,16 @@ Returns a collection of all entity types that have changed on the server.
 
 Returns a collection of all data changed on the server for a particular entity type after a given date.
 
-### Get by timestamchangesp [GET]
+### Get by timestamp [GET]
 
-+ Parameters
-    + timestamp (datetime) - timestamp of latest local change
++ Request 
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
     
 + Response 200 (application/json)
 
@@ -170,32 +202,38 @@ Returns a collection of all data changed on the server for a particular entity t
                 "data": [
                     {
                         "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "site_id": 17505,
-                        "site_type": 1,
-                        "is_repairer": 0,
-                        "display_name": "BB2326 Tamworth",
-                        "default_locker_type_id": 1,
-                        "external_id": "2326",
+                        "siteId": 17505,
+                        "siteType": 1,
+                        "isRepairer": 0,
+                        "displayName": "BB2326 Tamworth",
+                        "defaultLockerTypeId": 1,
+                        "externalId": "2326",
                         "address1": "Tamworth FC",
                         "address2": "The Lamb Ground, Kettlebrook",
                         "town": "Tamworth",
                         "region": "Staff",
-                        "postal_code": "B77 1AA",
-                        "site_access_information": "Access code: 7-7-0-6",
-                        "last_modified": "2015-06-16 16:22:53.020",
+                        "postalCode": "B77 1AA",
+                        "siteAccessInformation": "Access code: 7-7-0-6",
+                        "lastModified": "2015-06-16 16:22:53.020",
                         "notes": "Installed 13/08/07\nIMPS NOTES\nInformation on map. ",
-                        "parent_site_id": null
+                        "parentSiteId": null
                     }
                 ]
             }
         ]
 
-## /changes/trunk_route/{timestamp}
+## /changes/trunkRoute/{timestamp}
 
 ### Get by timestamp [GET]
 
-+ Parameters
-    + timestamp (datetime) - timestamp of latest local change
++ Request
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
     
 + Response 200 (application/json)
 
@@ -204,20 +242,26 @@ Returns a collection of all data changed on the server for a particular entity t
                 "data": [
                     {
                         "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "from_dc_identifier": 1,
-                        "to_dc_identifier": 1,
-                        "last_modified": "2017-06-16 16:22:53.020"
+                        "fromDcIdentifier": 1,
+                        "toDcIdentifier": 1,
+                        "lastModified": "2017-06-16 16:22:53.020"
                     }
                 ]
             }
         ]
 
-## /changes/trunk_route_leg/{timestamp}
+## /changes/trunkRouteLeg/{timestamp}
 
 ### Get by timestamp [GET]
 
-+ Parameters
-    + timestamp (datetime) - timestamp of latest local change
++ Request
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
     
 + Response 200 (application/json)
 
@@ -226,10 +270,10 @@ Returns a collection of all data changed on the server for a particular entity t
                 "data": [
                     {
                         "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "trunk_route_id": 1,
-                        "dc_identifier": 1,
+                        "trunkRouteId": 1,
+                        "dcIdentifier": 1,
                         "sequence": 1,
-                        "last_modified": "2017-06-16 16:22:53.020"
+                        "lastModified": "2017-06-16 16:22:53.020"
                     }
                 ]
             }
