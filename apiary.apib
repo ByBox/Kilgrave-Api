@@ -1,13 +1,140 @@
 FORMAT: 1A
 HOST: http://kilgrave.apiblueprint.org/
 
-# kilgrave
+# Kilgrave
 
 Alters the space-time continuum to allow packages to be delivered instantaneously.
 
-## Changes Collection [/changes]
+# Group Devices
 
-### Get all changes [POST]
+## /device/{deviceId}
+
+Devices represent a physical device that consumes the api. In most cases, this is probably some kind of handheld scanner.
+
+### Create [PUT]
+
+Creates a new device and returns a HAL based representation of urls that must be followed in order to provision this device completely.
+
++ Request
+
++ Parameters
+    + deviceId (string) - The unique id of the device
+
++ Response 201 (application/hal+json)
+
+         {
+            "_links":{
+               "self":{
+                  "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3",
+                  "method" : "GET"
+               },
+               "configure":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
+                     "method" : "GET"
+                  }
+               ],
+               "sync":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes",
+                     "method" : "POST"
+                  }
+               ],
+               "complete":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3/provisioned",
+                     "method" : "POST"
+                  }
+               ]
+            }
+         }
+
+### By Id [GET]
+
+Gets a device by it's unique id
+
++ Request
+
++ Parameters
+    + deviceId (string) - The unique id of the device
+
++ Response 200 (application/hal+json)
+
+         {
+           "device": {
+              "id": "8b5f4336d5a3a0a9d1b3",
+              "_links":{
+                "self":{
+                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3",
+                   "method" : "GET"
+                 }
+               }
+            }
+         }
+
+
+## /device/{deviceId}/provisioned
+
+### Provisioned [POST]
+
+Updates the device to mark it as provisioned and finalise the provisioning process.
+
++ Request
+
++ Response 200 (text/plain; charset=utf-8)
+
+# Group Configuration
+
+Configuration represents the server held configuration for this system.
+
+## /configuration
+
+### Load [GET]
+
++ Response 200 (application/hal+json)
+
+         {
+           "config": {
+              "_links":{
+                "self":{
+                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
+                   "method" : "GET"
+                 }
+               }
+            }
+         }
+
+# Group Events
+
+The events endpoint is responsible for providing a means to allow a client to post events to the server, examples of events might be `ItemDelivered`, `ItemScannedToCage`, etc.
+
+## /events
+
+Returns a collection of all entity types that have changed on the server.
+
+### Create [POST]
+
++ Request (application/json)
+
+        
+        {
+          "events": [
+          
+          ]
+        }
+
++ Response 201 (text/plain; charset=utf-8)
+
+# Group Changes
+
+The changes endpoint is responsible for providing changed data from the server and for exposing a means to allow a client to figure out what
+has changed.
+
+## /changes
+
+Returns a collection of all entity types that have changed on the server.
+
+### Get all [POST]
 
 + Request (application/json)
 
@@ -29,13 +156,13 @@ Alters the space-time continuum to allow packages to be delivered instantaneousl
         
 + Response 204 (application/json)
 
+## /changes/site/{timestamp}
 
-## Changes for a specific entity [/changes/{entity}/{timestamp}]
+Returns a collection of all data changed on the server for a particular entity type after a given date.
 
-### Get changes (site) [GET]
+### Get by timestamp [GET]
 
 + Parameters
-    + entity (string) - name of entity
     + timestamp (datetime) - timestamp of latest local change
     
 + Response 200 (application/json)
@@ -60,6 +187,51 @@ Alters the space-time continuum to allow packages to be delivered instantaneousl
                         "last_modified": "2015-06-16 16:22:53.020",
                         "notes": "Installed 13/08/07\nIMPS NOTES\nInformation on map. ",
                         "parent_site_id": null
+                    }
+                ]
+            }
+        ]
+
+## /changes/trunk_route/{timestamp}
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                        "from_dc_identifier": 1,
+                        "to_dc_identifier": 1,
+                        "last_modified": "2017-06-16 16:22:53.020"
+                    }
+                ]
+            }
+        ]
+
+## /changes/trunk_route_leg/{timestamp}
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                        "trunk_route_id": 1,
+                        "dc_identifier": 1,
+                        "sequence": 1,
+                        "last_modified": "2017-06-16 16:22:53.020"
                     }
                 ]
             }
