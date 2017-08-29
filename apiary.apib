@@ -3,7 +3,15 @@ HOST: http://kilgrave.apiblueprint.org/
 
 # Kilgrave
 
-Alters the space-time continuum to allow packages to be delivered instantaneously.
+This document describes the HTTP API to enable handheld scanner integration with ByBox systems.
+
+Using this site you can:
+
+ * Generate sample code in cURL, Java, JavaScript, Node.js, Perl, Python, PHP, Ruby, GO, C#, Visual Basic, Groovy, Objective C, and Swift.
+ * View the structural requirements of requests for various HTTP endpoints.
+ * View the structure of expected responses and their associated HTTP status codes.
+
+Find out more about [using this documentation](https://blog.apiary.io/2014/03/21/Re-API-Design-for-Humans).
 
 #Authentication
 
@@ -155,8 +163,13 @@ Returns a collection of all entity types that have changed on the server.
 
 ### Get all [POST]
 
-+ Request (application/json)
-        
++ Request (application/hal+json)
+
+    ##### The following defines the body specification for the `POST` request.
+    + `site` (timestamp) -- The `lastModified` date of local site data
+    + `distributionCentre` (timestamp) -- The `lastModified` date of local distribution centre data
+    + `siteRoute` (timestamp) -- The `lastModified` date of local site route data
+            
     + Body
 
         {
@@ -168,17 +181,31 @@ Returns a collection of all entity types that have changed on the server.
     + Headers
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
++ Response 200 (application/hal+json)
 
-+ Response 200 (application/json)
+         {
+            "_links":{
+               "self":{
+                  "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes",
+                  "method" : "POST"
+               },
+               "site":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/2016-08-20T10:45:12",
+                     "method" : "GET"
+                  }
+               ],
+               "distributionCentre":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/2016-01-01T09:00:00",
+                     "method" : "GET"
+                  }
+               ]
+            }
+         }
 
-        [
-            {
-                "site": "/api/changes/site/2016-08-20T10:45:12",
-                "distributionCentre": "/api/changes/distributionCentre/2016-01-01T09:00:00"
-            } 
-        ]
         
-+ Response 204 (application/json)
++ Response 204 (text/plain; charset=utf-8)
 
 ## /changes/site/{timestamp}
 
