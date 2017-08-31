@@ -435,6 +435,40 @@ Returns a collection of all trip data changed on the server after a given date.
             }
         ]
 
+## /changes/tripitem/{timestamp}
+
+Returns a collection of all trip item data changed on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Request
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "0449B265-8CA7-4083-8203-94F34A2366F8",
+                        "tripId": "0349B236-8CA7-4083-8203-94F34A2366F8",
+                        "consignmentCode": "020200230601",
+                        "deliverToSiteId": 20495,
+                        "status": "DeliveredToLockBox",
+                        "deliveryGroup": "203131",
+                        "hazardousMaterial": false,
+                        "lastModified": "2017-06-16 16:22:53.020"
+                    }
+                ]
+            }
+        ]
+
 # Group Data Structures
 
 ## SiteRoute (object)
@@ -515,6 +549,55 @@ Returns a collection of all trip data changed on the server after a given date.
         + `Unplanned`
 
     The type of trip.
+
++ lastModified: `2017-06-16 16:22:53.020` (datetime)
+
+    The datetime the site route was last modified.
+
+## TripItem (object)
+
++ id: `0449B265-8CA7-4083-8203-94F34A2366F8` (guid)
+
+    The id of the trip item.
+
++ tripId: `0349B236-8CA7-4083-8203-94F34A2366F8` (guid)
+
+    The id of the trip on which this item is loaded.
+
++ consignmentCode: `020200230601` (string)
+
+    The consignment code of the item.
+
++ deliverToSiteId: `20495` (int)
+
+    The id of the site where the item is to be delivered.
+
++ status: `DeliveredToLockBox` (enum[string])
+    + Members
+        + `CreatedByDK`
+        + `CreatedByDevice`
+        + `CollectedFromCustomerSite`
+        + `UnloadedFromVehicle`
+        + `ReturnCollectedFromLockBox`
+        + `StockTakeFromLockBox`
+        + `DeliveredToLockBox`
+        + `ReturnCollectedFromiBox`
+        + `ExpiryCollectedFromiBox`
+        + `DeliveredToiBox`
+        + `ReturnDeliveredToCustomer`
+        + `ExceptionRaisedNonDelivery`
+        + `ReturnCollectedFromInBoot`
+        + `DeliveredToInBoot`
+
+    The status of the item.
+
++ deliveryGroup: `20495` (int)
+
+    The delivery group of the item (used to group items delivered to the same physical site but different logical location).
+
++ hazardousMaterial: `false` (boolean)
+    
+    Indicates if the item is/contains hazardous material.
 
 + lastModified: `2017-06-16 16:22:53.020` (datetime)
 
