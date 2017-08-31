@@ -270,7 +270,7 @@ Returns a collection of all distribution centre data changed on the server after
             }
         ]
 
-## /changes/site/{timestamp}
+## /changes/site/{timestamp}{?page}
 
 Returns a collection of all site data changed on the server after a given date.
 
@@ -278,18 +278,20 @@ Returns a collection of all site data changed on the server after a given date.
 
 + Parameters
     + timestamp (datetime) - timestamp of latest local change
+    + page (int, optional) - the page of data to return
+        + Default: `1`
 
 + Request 
 
     + Headers
 
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
-
     
-+ Response 200 (application/json)
++ Response 200 (application/hal+json)
 
-        [
-            {
+        {
+            "totalChanges": 50,
+            "_embedded": {
                 "data": [
                     {
                         "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
@@ -310,8 +312,19 @@ Returns a collection of all site data changed on the server after a given date.
                         "parentSiteId": null
                     }
                 ]
+            },
+            "_links": {
+                "self":{
+                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site?timestamp=2016-08-20T10:45:12&page=1",
+                   "method" : "GET"
+                },
+                "next":{
+                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site?timestamp=2016-08-20T10:45:12&page=2",
+                    "method" : "GET"
+                },
             }
-        ]
+        }
+        
 
 ## /changes/siteRoute/{timestamp}{?page}
 
