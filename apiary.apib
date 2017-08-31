@@ -33,6 +33,7 @@ Creates a new device and returns a HAL based representation of urls that must be
         + deviceId (string) - The unique id of the device
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 201 (application/hal+json)
@@ -74,6 +75,7 @@ Gets a device by it's unique id
         + deviceId (string) - The unique id of the device
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (application/hal+json)
@@ -100,6 +102,7 @@ Updates the device to mark it as provisioned and finalise the provisioning proce
 + Request
 
     + Headers
+    
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (text/plain; charset=utf-8)
@@ -115,6 +118,7 @@ Configuration represents the server held configuration for this system.
 + Request
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (application/hal+json)
@@ -141,6 +145,7 @@ The events endpoint is responsible for providing a means to allow a client to po
 + Request (application/json)
 
     + Headers
+    
         Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
     + Body    
@@ -181,6 +186,7 @@ Returns a collection of all entity types that have changed on the server.
         }
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
 + Response 200 (application/hal+json)
@@ -233,6 +239,7 @@ Returns a collection of all distribution centre data changed on the server after
         + timestamp (datetime) - timestamp of latest local change
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
     
@@ -265,6 +272,7 @@ Returns a collection of all site data changed on the server after a given date.
         + timestamp (datetime) - timestamp of latest local change
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
     
@@ -295,6 +303,39 @@ Returns a collection of all site data changed on the server after a given date.
             }
         ]
 
+## /changes/siteRoute/{timestamp}
+
+Returns a collection of all site route data changed on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Request 
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "1427B906-7CA7-4083-8203-94F34A2366F8",
+                        "siteId": 17505,
+                        "routeCode": "691",
+                        "routeType": "Delivery",
+                        "abbreviation": "BBC",
+                        "description": "BBC-691-D",
+                        "lastModified": "2015-06-16 16:22:53.020"
+                    }
+                ]
+            }
+        ]
+
 ## /changes/trunkRoute/{timestamp}
 
 Returns a collection of all trunk route data changed on the server after a given date.
@@ -307,6 +348,7 @@ Returns a collection of all trunk route data changed on the server after a given
         + timestamp (datetime) - timestamp of latest local change
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
     
@@ -337,6 +379,7 @@ Returns a collection of all trunk route leg data changed on the server after a g
         + timestamp (datetime) - timestamp of latest local change
 
     + Headers
+
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
 
     
@@ -355,3 +398,34 @@ Returns a collection of all trunk route leg data changed on the server after a g
                 ]
             }
         ]
+
+# Group Data Structures
+
+## SiteRoute (object)
+
++ id: `1427B906-7CA7-4083-8203-94F34A2366F8` (guid)
+
+    The ID of the site route.
+
++ siteId: `17505` (int)
+
+    The ID of the site.
+
++ routeCode: `691` (string)
+
+    The code associated with the route
+
++ routeType: `Delivery` (enum[string])
+    + Members
+        + `Delivery`
+        + `Collection`
+
+    The type of the route.
+
++ abbreviation: `BBC` (string)
+
+    The abbreviation for the route.
+
++ description: `BBC-691-D` (string)
+
+    The description for the route.
