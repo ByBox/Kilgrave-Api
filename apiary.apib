@@ -178,6 +178,10 @@ Returns a collection of all entity types that have changed on the server.
     + `site` (timestamp) -- The `lastModified` date of local site data
     + `distributionCentre` (timestamp) -- The `lastModified` date of local distribution centre data
     + `siteRoute` (timestamp) -- The `lastModified` date of local site route data
+    + `trunkRoute` (timestamp) -- The `lastModified` date of local trunk route data
+    + `trunkRouteLeg` (timestamp) -- The `lastModified` date of local trunk route leg data
+    + `trip` (timestamp) -- The `lastModified` date of local trip data
+    + `tripItem` (timestamp) -- The `lastModified` date of local trip item data
             
     + Body
 
@@ -187,6 +191,8 @@ Returns a collection of all entity types that have changed on the server.
                 "siteRoute": "2017-03-20T19:15:00
                 "trunkRoute": "2016-01-01T09:00:00",
                 "trunkRouteLeg": "2016-01-01T09:00:00",
+                "trip": "2016-01-01T09:00:00",
+                "tripItem": "2016-01-01T09:00:00",
             }
 
     + Headers
