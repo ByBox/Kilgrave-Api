@@ -400,6 +400,41 @@ Returns a collection of all trunk route leg data changed on the server after a g
             }
         ]
 
+## /changes/trips/{timestamp}
+
+Returns a collection of all trip data changed on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Request
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "0349B236-8CA7-4083-8203-94F34A2366F8",
+                        "name": "691-D",
+                        "date": "2017-08-16 16:22:53.020",
+                        "dc": 195,
+                        "status": "Loading",
+                        "manifestVersion": 1,
+                        "vehicle": "YS06 VDZ",
+                        "type": "RoutePlanned",
+                        "lastModified": "2017-06-16 16:22:53.020"
+                    }
+                ]
+            }
+        ]
+
 # Group Data Structures
 
 ## SiteRoute (object)
@@ -430,3 +465,57 @@ Returns a collection of all trunk route leg data changed on the server after a g
 + description: `BBC-691-D` (string)
 
     The description for the route.
+
++ lastModified: `2017-06-16 16:22:53.020` (datetime)
+
+    The datetime the site route was last modified.
+
+## Trip (object)
+
++ id: `1427B906-7CA7-4083-8203-94F34A2366F8` (guid)
+
+    The ID of the trip.
+
++ name: `691-D` (string)
+
+    The name of the trip.
+
++ dc: `195` (int)
+
+    The dc handling the trip.
+
++ status: `Loading` (enum[string])
+    + Members
+        + `Planning`
+        + `AwaitingLoading`
+        + `Loading`
+        + `AwaitingManifest`
+        + `AwaitingDeparture`
+        + `InProgress`
+        + `Unloading`
+        + `AwaitingDebrief`
+        + `Debriefing`
+        + `Complete`
+        + `Closed`
+        + `Cancelled`
+
+    The status of the trip.
+
++ manifestVersion: `1` (int)
+
+    The numerically increasing version of the manifest.
+
++ vehicle: `BBC-691-D` (string)
+
+    The registration number of the vehicle carrying out the trip. For unplanned trips this won't be present.
+
++ type: `Loading` (enum[string])
+    + Members
+        + `Planned`
+        + `Unplanned`
+
+    The type of trip.
+
++ lastModified: `2017-06-16 16:22:53.020` (datetime)
+
+    The datetime the site route was last modified.
