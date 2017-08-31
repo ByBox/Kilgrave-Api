@@ -176,6 +176,8 @@ Returns a collection of all entity types that have changed on the server.
             "site": "2016-08-20T10:45:12",
             "distributionCentre": "2016-01-01T09:00:00",
             "siteRoute": "2017-03-20T19:15:00
+            "trunkRoute": "2016-01-01T09:00:00",
+            "trunkRouteLeg": "2016-01-01T09:00:00",
         }
 
     + Headers
@@ -200,6 +202,18 @@ Returns a collection of all entity types that have changed on the server.
                      "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/2016-01-01T09:00:00",
                      "method" : "GET"
                   }
+               ],
+               "trunkRoute":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/2016-01-01T09:00:00",
+                     "method" : "GET"
+                  }
+               ],
+               "trunkRouteLeg":[
+                  {
+                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/2016-01-01T09:00:00",
+                     "method" : "GET"
+                  }
                ]
             }
          }
@@ -207,9 +221,41 @@ Returns a collection of all entity types that have changed on the server.
         
 + Response 204 (text/plain; charset=utf-8)
 
+## /changes/distributionCentre/{timestamp}
+
+Returns a collection of all distribution centre data changed on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Request 
+
+    + Parameters
+        + timestamp (datetime) - timestamp of latest local change
+
+    + Headers
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
+    
++ Response 200 (application/json)
+
+        [
+            {
+                "data": [
+                    {
+                        "id": "2529B478-7CA7-4092-8203-94F34A2366F8",
+                        "identifier": 175,
+                        "description": "ByBox UAT Coventry NDC (BBC)",
+                        "abbreviation": "BBC",
+                        "hub": false,
+                        "lastModified": "2015-06-16 16:22:53.020"
+                    }
+                ]
+            }
+        ]
+
 ## /changes/site/{timestamp}
 
-Returns a collection of all data changed on the server for a particular entity type after a given date.
+Returns a collection of all site data changed on the server after a given date.
 
 ### Get by timestamp [GET]
 
@@ -251,6 +297,8 @@ Returns a collection of all data changed on the server for a particular entity t
 
 ## /changes/trunkRoute/{timestamp}
 
+Returns a collection of all trunk route data changed on the server after a given date.
+
 ### Get by timestamp [GET]
 
 + Request
@@ -278,6 +326,8 @@ Returns a collection of all data changed on the server for a particular entity t
         ]
 
 ## /changes/trunkRouteLeg/{timestamp}
+
+Returns a collection of all trunk route leg data changed on the server after a given date.
 
 ### Get by timestamp [GET]
 
