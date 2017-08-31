@@ -409,7 +409,7 @@ Returns a collection of all trunk route leg data changed on the server after a g
             }
         ]
 
-## /changes/trip/{timestamp}
+## /changes/trip/{timestamp}{?page}
 
 Returns a collection of all trip data changed on the server after a given date.
 
@@ -417,6 +417,8 @@ Returns a collection of all trip data changed on the server after a given date.
 
 + Parameters
     + timestamp (datetime) - timestamp of latest local change
+    + page (int, optional) - the page of data to return
+        + Default: `1`
 
 + Request
 
@@ -426,8 +428,9 @@ Returns a collection of all trip data changed on the server after a given date.
     
 + Response 200 (application/json)
 
-        [
-            {
+        {
+            "totalChanges": 50,
+            "_embedded": {
                 "data": [
                     {
                         "id": "0349B236-8CA7-4083-8203-94F34A2366F8",
@@ -439,10 +442,31 @@ Returns a collection of all trip data changed on the server after a given date.
                         "vehicle": "YS06 VDZ",
                         "type": "RoutePlanned",
                         "lastModified": "2017-06-16 16:22:53.020"
+                    },
+                    {
+                        "id": "0119B236-8CA7-4083-8203-94F34A2366F8",
+                        "name": "692-D",
+                        "date": "2017-08-16 16:22:53.020",
+                        "dc": 195,
+                        "status": "Loading",
+                        "manifestVersion": 1,
+                        "vehicle": "YS06 VDZ",
+                        "type": "RoutePlanned",
+                        "lastModified": "2017-06-16 16:22:53.020"
                     }
                 ]
+            },
+            "_links": {
+                "self":{
+                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trip?timestamp=2016-08-20T10:45:12&page=1",
+                   "method" : "GET"
+                },
+                "next":{
+                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trip?timestamp=2016-08-20T10:45:12&page=2",
+                    "method" : "GET"
+                },
             }
-        ]
+        }
 
 ## /changes/tripitem/{timestamp}{?page}
 
@@ -464,6 +488,7 @@ Returns a collection of all trip item data changed on the server after a given d
 + Response 200 (application/hal+json)
 
         {
+            "totalChanges": 50,
             "_embedded": {
                 "data": [
                     {
