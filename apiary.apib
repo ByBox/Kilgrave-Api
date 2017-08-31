@@ -346,7 +346,7 @@ Returns a collection of all site route data changed on the server after a given 
             }
         ]
 
-## /changes/trunkRoute/{timestamp}
+## /changes/trunkRoute/{timestamp}{?page}
 
 Returns a collection of all trunk route data changed on the server after a given date.
 
@@ -354,18 +354,20 @@ Returns a collection of all trunk route data changed on the server after a given
 
 + Parameters
     + timestamp (datetime) - timestamp of latest local change
+    + page (int, optional) - the page of data to return
+        + Default: `1`
 
 + Request
 
     + Headers
 
             Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
-
     
 + Response 200 (application/json)
 
-        [
-            {
+        {
+            "totalChanges": 50,
+            "_embedded": {
                 "data": [
                     {
                         "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
@@ -374,8 +376,18 @@ Returns a collection of all trunk route data changed on the server after a given
                         "lastModified": "2017-06-16 16:22:53.020"
                     }
                 ]
+            },
+            "_links": {
+                "self":{
+                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute?timestamp=2016-08-20T10:45:12&page=1",
+                   "method" : "GET"
+                },
+                "next":{
+                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute?timestamp=2016-08-20T10:45:12&page=2",
+                    "method" : "GET"
+                },
             }
-        ]
+        }
 
 ## /changes/trunkRouteLeg/{timestamp}{?page}
 
