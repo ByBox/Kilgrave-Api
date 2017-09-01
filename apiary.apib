@@ -259,18 +259,16 @@ Returns a collection of all distribution centre data changed on the server after
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "2529B478-7CA7-4092-8203-94F34A2366F8",
-                        "identifier": 175,
-                        "description": "ByBox UAT Coventry NDC (BBC)",
-                        "abbreviation": "BBC",
-                        "hub": false,
-                        "lastModified": "2015-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "2529B478-7CA7-4092-8203-94F34A2366F8",
+                    "identifier": 175,
+                    "description": "ByBox UAT Coventry NDC (BBC)",
+                    "abbreviation": "BBC",
+                    "hub": false,
+                    "lastModified": "2015-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/20160820T104512/1",
@@ -305,28 +303,26 @@ Returns a collection of all site data changed on the server after a given date.
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "siteId": 17505,
-                        "siteType": 1,
-                        "isRepairer": 0,
-                        "displayName": "BB2326 Tamworth",
-                        "defaultLockerTypeId": 1,
-                        "externalId": "2326",
-                        "address1": "Tamworth FC",
-                        "address2": "The Lamb Ground, Kettlebrook",
-                        "town": "Tamworth",
-                        "region": "Staff",
-                        "postalCode": "B77 1AA",
-                        "siteAccessInformation": "Access code: 7-7-0-6",
-                        "lastModified": "2015-06-16 16:22:53.020",
-                        "notes": "Installed 13/08/07\nIMPS NOTES\nInformation on map. ",
-                        "parentSiteId": null
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                    "siteId": 17505,
+                    "siteType": 1,
+                    "isRepairer": 0,
+                    "displayName": "BB2326 Tamworth",
+                    "defaultLockerTypeId": 1,
+                    "externalId": "2326",
+                    "address1": "Tamworth FC",
+                    "address2": "The Lamb Ground, Kettlebrook",
+                    "town": "Tamworth",
+                    "region": "Staff",
+                    "postalCode": "B77 1AA",
+                    "siteAccessInformation": "Access code: 7-7-0-6",
+                    "lastModified": "2015-06-16 16:22:53.020",
+                    "notes": "Installed 13/08/07\nIMPS NOTES\nInformation on map. ",
+                    "parentSiteId": null
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/20160820T104512/1",
@@ -361,19 +357,17 @@ Returns a collection of all site route data changed on the server after a given 
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "1427B906-7CA7-4083-8203-94F34A2366F8",
-                        "siteId": 17505,
-                        "routeCode": "691",
-                        "routeType": "Delivery",
-                        "abbreviation": "BBC",
-                        "description": "BBC-691-D",
-                        "lastModified": "2015-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "1427B906-7CA7-4083-8203-94F34A2366F8",
+                    "siteId": 17505,
+                    "routeCode": "691",
+                    "routeType": "Delivery",
+                    "abbreviation": "BBC",
+                    "description": "BBC-691-D",
+                    "lastModified": "2015-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/siteRoute/20160820T104512/1",
@@ -407,16 +401,14 @@ Returns a collection of all trunk route data changed on the server after a given
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "fromDcIdentifier": 1,
-                        "toDcIdentifier": 1,
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                    "fromDcIdentifier": 1,
+                    "toDcIdentifier": 1,
+                    "lastModified": "2017-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/20160820T104512/1",
@@ -451,17 +443,15 @@ Returns a collection of all trunk route leg data changed on the server after a g
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
-                        "trunkRouteId": 1,
-                        "dcIdentifier": 1,
-                        "sequence": 1,
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                    "trunkRouteId": 1,
+                    "dcIdentifier": 1,
+                    "sequence": 1,
+                    "lastModified": "2017-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/20160820T104512/1",
@@ -495,32 +485,30 @@ Returns a collection of all trip data changed on the server after a given date.
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "0349B236-8CA7-4083-8203-94F34A2366F8",
-                        "name": "691-D",
-                        "date": "2017-08-16 16:22:53.020",
-                        "dc": 195,
-                        "status": "Loading",
-                        "manifestVersion": 1,
-                        "vehicle": "YS06 VDZ",
-                        "type": "RoutePlanned",
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    },
-                    {
-                        "id": "0119B236-8CA7-4083-8203-94F34A2366F8",
-                        "name": "692-D",
-                        "date": "2017-08-16 16:22:53.020",
-                        "dc": 195,
-                        "status": "Loading",
-                        "manifestVersion": 1,
-                        "vehicle": "YS06 VDZ",
-                        "type": "RoutePlanned",
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "0349B236-8CA7-4083-8203-94F34A2366F8",
+                    "name": "691-D",
+                    "date": "2017-08-16 16:22:53.020",
+                    "dc": 195,
+                    "status": "Loading",
+                    "manifestVersion": 1,
+                    "vehicle": "YS06 VDZ",
+                    "type": "RoutePlanned",
+                    "lastModified": "2017-06-16 16:22:53.020"
+                },
+                {
+                    "id": "0119B236-8CA7-4083-8203-94F34A2366F8",
+                    "name": "692-D",
+                    "date": "2017-08-16 16:22:53.020",
+                    "dc": 195,
+                    "status": "Loading",
+                    "manifestVersion": 1,
+                    "vehicle": "YS06 VDZ",
+                    "type": "RoutePlanned",
+                    "lastModified": "2017-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trip/20160820T104512/1",
@@ -554,30 +542,28 @@ Returns a collection of all trip item data changed on the server after a given d
 
         {
             "totalChanges": 50,
-            "_embedded": {
-                "data": [
-                    {
-                        "id": "0449B265-8CA7-4083-8203-94F34A2366F8",
-                        "tripId": "0349B236-8CA7-4083-8203-94F34A2366F8",
-                        "consignmentCode": "020200230601",
-                        "deliverToSiteId": 20495,
-                        "status": "DeliveredToLockBox",
-                        "deliveryGroup": "203131",
-                        "hazardousMaterial": false,
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    },
-                    {
-                        "id": "0549B265-8CA7-4083-8203-94F34A2366F8",
-                        "tripId": "0349B236-8CA7-4083-8203-94F34A2366F8",
-                        "consignmentCode": "020200230602",
-                        "deliverToSiteId": 20495,
-                        "status": "DeliveredToLockBox",
-                        "deliveryGroup": "203131",
-                        "hazardousMaterial": false,
-                        "lastModified": "2017-06-16 16:22:53.020"
-                    }
-                ]
-            },
+            "_embedded": [
+                {
+                    "id": "0449B265-8CA7-4083-8203-94F34A2366F8",
+                    "tripId": "0349B236-8CA7-4083-8203-94F34A2366F8",
+                    "consignmentCode": "020200230601",
+                    "deliverToSiteId": 20495,
+                    "status": "DeliveredToLockBox",
+                    "deliveryGroup": "203131",
+                    "hazardousMaterial": false,
+                    "lastModified": "2017-06-16 16:22:53.020"
+                },
+                {
+                    "id": "0549B265-8CA7-4083-8203-94F34A2366F8",
+                    "tripId": "0349B236-8CA7-4083-8203-94F34A2366F8",
+                    "consignmentCode": "020200230602",
+                    "deliverToSiteId": 20495,
+                    "status": "DeliveredToLockBox",
+                    "deliveryGroup": "203131",
+                    "hazardousMaterial": false,
+                    "lastModified": "2017-06-16 16:22:53.020"
+                }
+            ],
             "_links": {
                 "self":{
                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/tripitem/20160820T104512/1",
