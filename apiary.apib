@@ -39,29 +39,23 @@ Creates a new device and returns a HAL based representation of urls that must be
 + Response 201 (application/hal+json)
 
          {
-            "_links":{
-               "self":{
-                  "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3",
-                  "method" : "GET"
+            "_links": {
+               "self": {
+                  "href": "https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3",
+                  "method": "GET"
                },
-               "configure":[
-                  {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
-                     "method" : "GET"
-                  }
-               ],
-               "sync":[
-                  {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes",
-                     "method" : "POST"
-                  }
-               ],
-               "complete":[
-                  {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3/provisioned",
-                     "method" : "POST"
-                  }
-               ]
+               "configure": {
+                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
+                     "method": "GET"
+               },
+               "sync": {
+                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/changes",
+                     "method": "POST"
+               },
+               "complete":{
+                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/device/8b5f4336d5a3a0a9d1b3/provisioned",
+                     "method": "POST"
+               }
             }
          }
 
