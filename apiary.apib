@@ -196,35 +196,27 @@ Returns a collection of all entity types that have changed on the server.
 + Response 200 (application/hal+json)
 
          {
-            "_links":{
-               "self":{
+            "_links": {
+               "self": {
                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes",
                   "method" : "POST"
                },
-               "changes/site":[
-                  {
+               "changes/site": {
                      "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/20160820T104512",
                      "method" : "GET"
-                  }
-               ],
-               "changes/distributionCentre":[
-                  {
+               },
+               "changes/distributionCentre": {
                      "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/20160101T090000",
                      "method" : "GET"
-                  }
-               ],
-               "changes/trunkRoute":[
-                  {
+               },
+               "changes/trunkRoute": {
                      "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/20160101T090000",
                      "method" : "GET"
-                  }
-               ],
-               "changes/trunkRouteLeg":[
-                  {
+               },
+               "changes/trunkRouteLeg": {
                      "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/20160101T090000",
                      "method" : "GET"
-                  }
-               ]
+               }
             }
          }
 
