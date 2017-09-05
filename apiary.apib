@@ -303,9 +303,9 @@ Returns a collection of all site data changed on the server after a given date.
                     "town": "Tamworth",
                     "region": "Staff",
                     "postalCode": "B77 1AA",
-                    "siteAccessInformation": "Access code: 7-7-0-6",
+                    "siteAccessInformation": "Access code: XXXX",
                     "lastModified": "2015-06-16 16:22:53.020",
-                    "notes": "Installed 13/08/07\nIMPS NOTES\nInformation on map. ",
+                    "notes": "Installed on XX-XX-XXXX. ",
                     "parentSiteId": null
                 }
             ],
@@ -563,6 +563,95 @@ Returns a collection of all trip item data changed on the server after a given d
         }
 
 # Group Data Structures
+
+## Site(object)
+
++ id: `1427B906-7CA7-5083-8203-94F34A2366F8` (guid)
+
+    The ID of the site.
+
++ siteId: `17505` (int)
+
+    The ID of the site.
+
++ siteType: `ExchangeSite` (enum[string])
+    + Members
+        + `Unknown`
+        + `ExchangeSite`
+        + `CustomerCollectionSite`
+        + `GoldfishRerouteCentre`
+
+    The type of the site.
+
++ isRepairer: `false` (boolean)
+
+    Is the site a repair site. 
+
++ displayName: `BB2326 Tamworth` (string)
+
+    The name of the site.
+
++ defaultLockerTypeId: `1` (enum[string])
+    + Members
+        + `Unknown`
+        + `IBox`
+        + `LockBox`
+        + `VBox`
+        + `HomeDelivery`
+        + `CustomerCollection`
+        + `VBoxDayDelivery`
+        + `PUDO`
+        + `RepairAgent`
+        + `ThinventoryWarehouse`
+        + `NextDayToSite`
+        + `InBoot`
+        + `ElectronicLockBox`
+
+    The default lock type for the site.
+
++ externalId: `2326` (string)
+
+    The external identifier for the site.
+
++ address1: `Tamworth FC` (string)
+
+    The address of the site.
+
++ address2: `The Lamb Ground, Kettlebrook` (string)
+
+    The address of the site.
+
++ town: `Tamworth` (string)
+
+    The address of the site.
+
++ region: `Staff` (string)
+
+    The address of the site.
+
++ postalCode: `B77 1AA` (string)
+
+    The postal code of the site.
+
++ postalCode: `B77 1AA` (string)
+
+    The postal code of the site.
+
++ siteAccessInformation: `Access code: XYZ` (string)
+
+    The access details for the site.
+
++ lastModified: `2017-06-16 16:22:53.020` (datetime)
+
+    The datetime the site route was last modified.
+
++ notes: `Install on date XX-XX-XXXX` (string)
+
+    Any notes related to the site.
+
++ parentSiteId: `999` (int)
+
+    The ID of the parent site.
 
 ## SiteRoute (object)
 
