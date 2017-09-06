@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://kilgrave.apiblueprint.org/
+HOST: http://kilgrave.apiblueprint.org/v0/
 
 # Kilgrave
 
@@ -16,6 +16,23 @@ Find out more about [using this documentation](https://blog.apiary.io/2014/03/21
 #Authentication
 
 In this documentation BEARER-TOKEN-FROM-AUTHN-API refers to the token obtained from the the ByBox Authentication API.
+
+# Group Version
+
+## /version
+
+### Version [GET]
+
+Gets the version of the API
+
++ Response 200 (application/hal+json)
+
+         {
+            "majorVersion": 0,
+            "minorVersion": 1,
+            "patchLevel": 13,
+            "buildNumber": 256
+         }
 
 # Group Devices
 
@@ -56,19 +73,19 @@ Creates a new device and returns a HAL based representation of urls that must be
             "status": "Provisioning",
             "_links": {
                "self": {
-                  "href": "https://private-03f24-kilgraveapi.apiary-mock.com/device/990000862471854",
+                  "href": "device/990000862471854",
                   "method": "GET"
                },
                "configure": {
-                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
+                     "href": "configuration",
                      "method": "GET"
                },
                "sync": {
-                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/changes",
+                     "href": "changes",
                      "method": "POST"
                },
                "complete":{
-                     "href": "https://private-03f24-kilgraveapi.apiary-mock.com/device/990000862471854/provisioned",
+                     "href": "device/990000862471854/provisioned",
                      "method": "POST"
                }
             }
@@ -97,7 +114,7 @@ Gets a device by it's unique id.
            "status": "InUse",
            "_links":{
              "self":{
-                "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/044524d8-038a-4bc3-ab9c-6531635eef52",
+                "href": "device/044524d8-038a-4bc3-ab9c-6531635eef52",
                 "method" : "GET"
              }
            }
@@ -141,7 +158,7 @@ Configuration represents the server held configuration for this system.
            "config": {
               "_links":{
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/configuration",
+                   "href": "configuration",
                    "method" : "GET"
                  }
                }
@@ -215,23 +232,23 @@ Returns a collection of all entity types that have changed on the server.
          {
             "_links": {
                "self": {
-                  "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes",
+                  "href": "changes",
                   "method" : "POST"
                },
                "changes/site": {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/20160820T104512",
+                     "href": "changes/site/20160820T104512",
                      "method" : "GET"
                },
                "changes/distributionCentre": {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/20160101T090000",
+                     "href": "changes/distributionCentre/20160101T090000",
                      "method" : "GET"
                },
                "changes/trunkRoute": {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/20160101T090000",
+                     "href": "changes/trunkRoute/20160101T090000",
                      "method" : "GET"
                },
                "changes/trunkRouteLeg": {
-                     "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/20160101T090000",
+                     "href": "changes/trunkRouteLeg/20160101T090000",
                      "method" : "GET"
                }
             }
@@ -274,11 +291,11 @@ Returns a collection of all distribution centre data changed on the server after
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/20160820T104512/1",
+                   "href": "changes/distributionCentre/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/distributionCentre/20160820T104512/2",
+                    "href": "changes/distributionCentre/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -328,11 +345,11 @@ Returns a collection of all site data changed on the server after a given date.
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/20160820T104512/1",
+                   "href": "changes/site/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/site/20160820T104512/2",
+                    "href": "changes/site/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -373,11 +390,11 @@ Returns a collection of all site route data changed on the server after a given 
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/siteRoute/20160820T104512/1",
+                   "href": "changes/siteRoute/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/siteRoute/20160820T104512/2",
+                    "href": "changes/siteRoute/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -414,11 +431,11 @@ Returns a collection of all trunk route data changed on the server after a given
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/20160820T104512/1",
+                   "href": "changes/trunkRoute/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRoute/20160820T104512/2",
+                    "href": "changes/trunkRoute/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -457,11 +474,11 @@ Returns a collection of all trunk route leg data changed on the server after a g
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/20160820T104512/1",
+                   "href": "changes/trunkRouteLeg/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trunkRouteLeg/20160820T104512/2",
+                    "href": "changes/trunkRouteLeg/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -514,11 +531,11 @@ Returns a collection of all trip data changed on the server after a given date.
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trip/20160820T104512/1",
+                   "href": "changes/trip/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/trip/20160820T104512/2",
+                    "href": "changes/trip/20160820T104512/2",
                     "method" : "GET"
                 },
             }
@@ -569,11 +586,11 @@ Returns a collection of all trip item data changed on the server after a given d
             ],
             "_links": {
                 "self":{
-                   "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/tripitem/20160820T104512/1",
+                   "href": "changes/tripitem/20160820T104512/1",
                    "method" : "GET"
                 },
                 "next":{
-                    "href":"https://private-03f24-kilgraveapi.apiary-mock.com/changes/tripitem/20160820T104512/2",
+                    "href": "ls tochanges/tripitem/20160820T104512/2",
                     "method" : "GET"
                 },
             }
