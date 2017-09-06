@@ -322,7 +322,7 @@ Returns a collection of all site data changed on the server after a given date.
 + Response 200 (application/hal+json)
 
         {
-            "totalChanges": 50,
+            "totalChanges": 2,
             "_embedded": [
                 {
                     "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
@@ -356,6 +356,55 @@ Returns a collection of all site data changed on the server after a given date.
         }
         
 
+## /changes/site/{timestamp}/2
+
+Returns a collection of all site data changed on the server after a given date.
+
+### Get by timestamp (page 2) [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+    + page (int, optional) - the page of data to return
+        + Default: `1`
+
++ Request 
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+    
++ Response 200 (application/hal+json)
+
+        {
+            "totalChanges": 2,
+            "_embedded": [
+                {
+                    "id": "9829B906-7CA7-4083-8203-94F34A2366F8",
+                    "siteId": 175051,
+                    "siteType": 1,
+                    "isRepairer": 0,
+                    "displayName": "BB2326 Tamworth (2)",
+                    "defaultLockerType": "LockBox",
+                    "externalId": "2326",
+                    "address1": "Tamworth FC",
+                    "address2": "The Lamb Ground, Kettlebrook",
+                    "town": "Tamworth",
+                    "region": "Staff",
+                    "postalCode": "B77 1AA",
+                    "siteAccessInformation": "Access code: XXXX",
+                    "lastModified": "2015-06-16 16:22:53.020",
+                    "notes": "Installed on XX-XX-XXXX. ",
+                    "parentSiteId": null
+                }
+            ],
+            "_links": {
+                "self":{
+dd                   "href": "changes/site/20160820T104512/2",
+                   "method" : "GET"
+                }
+            }
+        }
+        
 ## /changes/siteRoute/{timestamp}/{page}
 
 Returns a collection of all site route data changed on the server after a given date.
