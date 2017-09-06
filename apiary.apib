@@ -53,6 +53,7 @@ Creates a new device and returns a HAL based representation of urls that must be
             "id": "990000862471854",
             "simNumber": "89314404000139171210",
             "name": "My Device",
+            "status": "Provisioning",
             "_links": {
                "self": {
                   "href": "https://private-03f24-kilgraveapi.apiary-mock.com/device/990000862471854",
@@ -93,6 +94,7 @@ Gets a device by it's unique id.
            "id": "990000862471854",
            "simNumber": "89314404000139171210",
            "name": "My Device",
+           "status": "InUse",
            "_links":{
              "self":{
                 "href":"https://private-03f24-kilgraveapi.apiary-mock.com/device/044524d8-038a-4bc3-ab9c-6531635eef52",
@@ -592,6 +594,14 @@ Returns a collection of all trip item data changed on the server after a given d
 + simNumber: `89314404000139171210` (int)
 
     The ICCID number of the sim card in the device.
+
++ status: `InUse` (enum[string])
+    + Members
+        + `Provisioning`
+        + `InUse`
+        + `SentForRepair`
+
+    The status of the device.
 
 + lastModified: `2017-06-16 16:22:53.020` (datetime)
 
