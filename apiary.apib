@@ -201,17 +201,20 @@ Returns a collection of all entity types that have changed on the server.
 + Request (application/hal+json)
 
     ##### The following defines the body specification for the `POST` request.
-    + `site` (timestamp) -- The `lastModified` date of local site data
-    + `distributionCentre` (timestamp) -- The `lastModified` date of local distribution centre data
-    + `siteRoute` (timestamp) -- The `lastModified` date of local site route data
-    + `trunkRoute` (timestamp) -- The `lastModified` date of local trunk route data
-    + `trunkRouteLeg` (timestamp) -- The `lastModified` date of local trunk route leg data
-    + `trip` (timestamp) -- The `lastModified` date of local trip data
-    + `tripItem` (timestamp) -- The `lastModified` date of local trip item data
+    + `includeDeletes` (boolean) -- Should delete based hal links be included in the response
+    + `lastModifieds` (object)
+        + `site` (timestamp) -- The `lastModified` date of local site data
+        + `distributionCentre` (timestamp) -- The `lastModified` date of local distribution centre data
+        + `siteRoute` (timestamp) -- The `lastModified` date of local site route data
+        + `trunkRoute` (timestamp) -- The `lastModified` date of local trunk route data
+        + `trunkRouteLeg` (timestamp) -- The `lastModified` date of local trunk route leg data
+        + `trip` (timestamp) -- The `lastModified` date of local trip data
+        + `tripItem` (timestamp) -- The `lastModified` date of local trip item data
             
     + Body
 
-            {
+            "includeDeletes": false,
+            "lastModifieds": {
                 "site": "2016-08-20T10:45:12",
                 "distributionCentre": "2016-01-01T09:00:00",
                 "siteRoute": "2017-03-20T19:15:00
@@ -235,6 +238,10 @@ Returns a collection of all entity types that have changed on the server.
                },
                "changes/site": {
                      "href": "changes/site/20160820T104512",
+                     "method" : "GET"
+               },
+               "deletes/site": {
+                     "href": "deletes/site/20160820T104512",
                      "method" : "GET"
                },
                "changes/distributionCentre": {
