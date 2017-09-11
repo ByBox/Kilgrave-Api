@@ -654,6 +654,41 @@ Returns a collection of all trip item data changed on the server after a given d
             }
         }
 
+# Group Deletes
+
+Returns a collection of all entity types that have been deleted on the server.
+
+## /deletes/site/{timestamp}
+
+Returns a collection of all site data deleted on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+
++ Request (application/hal+json)
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/hal+json)
+
+         {                                                                                                                                                                                                                                   
+           "totalResults": 1,                                                                                                                                                                                                                
+           "_embedded": [                                                                                                                                                                                                                    
+             "4bc930ea-0d4a-4cd0-b22b-43577baef2f0"                                                                                                                                                                                          
+           ],                                                                                                                                                                                                                                
+           "_links": {                                                                                                                                                                                                                       
+             "self": {                                                                                                                                                                                                                       
+               "href": "deletes/site/20170911T105449",                                                                                                                                                                                       
+               "method": "GET"                                                                                                                                                                                                               
+             }                                                                                                                                                                                                                               
+           }                                                                                                                                                                                                                                 
+         } 
+
+
 # Group Data Structures
 
 ## Device (object)
