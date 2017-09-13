@@ -67,7 +67,8 @@ Creates a new device and returns a HAL based representation of urls that must be
 + Response 201 (application/hal+json)
 
          {
-            "id": "990000862471854",
+            "id": "044524d8-038a-4bc3-ab9c-6531635eef52",
+            "deviceId": "990000862471854",
             "simNumber": "89314404000139171210",
             "name": "My Device",
             "status": "Provisioning",
@@ -108,13 +109,14 @@ Gets a device by it's unique id.
 + Response 200 (application/hal+json)
 
          {
-           "id": "990000862471854",
+           "id": "044524d8-038a-4bc3-ab9c-6531635eef52",
+           "deviceId": "990000862471854",
            "simNumber": "89314404000139171210",
            "name": "My Device",
            "status": "InUse",
            "_links":{
              "self":{
-                "href": "device/044524d8-038a-4bc3-ab9c-6531635eef52",
+                "href": "device/990000862471854",
                 "method" : "GET"
              }
            }
