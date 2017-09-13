@@ -92,6 +92,28 @@ Creates a new device and returns a HAL based representation of urls that must be
             }
          }
 
++ Request
+
+    ##### The following defines the body specification for the `PUT` request.
+    + `simNumber` (string) -- The `ICCID` number of the sim card in the device
+    + `name` (string) -- The `name` of the device
+            
+    + Body
+
+            {
+                "simNumber": "",
+                "name": "My Device"
+            }
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 400 (application/hal+json)
+
+         {
+           "message": "InvalidSimNumber",
+         }
 
 ### By Id [GET]
 
