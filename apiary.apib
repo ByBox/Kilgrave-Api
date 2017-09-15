@@ -286,6 +286,52 @@ Returns a collection of all entity types that have changed on the server.
         
 + Response 204 (text/plain; charset=utf-8)
 
+## /changes/user/{timestamp}/{page}
+
+Returns a collection of all user data changed on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+    + page (int, optional) - the page of data to return
+        + Default: `1`
+
++ Request 
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
+    
++ Response 200 (application/hal+json)
+
+        {                                                                                                                                                                                                                                   
+          "CurrentPage": 1,                                                                                                                                                                                                                 
+          "TotalPages": 0,                                                                                                                                                                                                                  
+          "TotalResults": 1,                                                                                                                                                                                                                
+          "_embedded": [                                                                                                                                                                                                                    
+            {                                                                                                                                                                                                                               
+              "Id": "b5a5c2c4-d9aa-4419-9717-9e42b0d944d8",                                                                                                                                                                                 
+              "LoginId": 999999,                                                                                                                                                                                                            
+              "Pin": 999999,                                                                                                                                                                                                                
+              "Forename": "Kilgrave",                                                                                                                                                                                                       
+              "Surname": "User",                                                                                                                                                                                                            
+              "LastModified": "0001-01-01T00:00:00",                                                                                                                                                                                        
+              "Roles": [                                                                                                                                                                                                                    
+                "ITAdmin"                                                                                                                                                                                                                   
+              ]                                                                                                                                                                                                                             
+            }                                                                                                                                                                                                                               
+          ],                                                                                                                                                                                                                                
+          "_links": {                                                                                                                                                                                                                       
+            "self": {                                                                                                                                                                                                                       
+              "Href": "changes/user/20170915T153732/1",                                                                                                                                                                                     
+              "Method": "GET"                                                                                                                                                                                                               
+            }                                                                                                                                                                                                                               
+          }                                                                                                                                                                                                                                 
+        } 
+
+
 ## /changes/distributionCentre/{timestamp}/{page}
 
 Returns a collection of all distribution centre data changed on the server after a given date.
@@ -808,6 +854,36 @@ Returns a collection of all trip item data changed on the server after a given d
 
 Returns a collection of all entity types that have been deleted on the server.
 
+## /deletes/distributioncentre/{timestamp}
+
+Returns a collection of all distribution centre data deleted on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+
++ Request (application/hal+json)
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/hal+json)
+
+         {                                                                                                                                                                                                                                   
+           "totalResults": 1,                                                                                                                                                                                                                
+           "_embedded": [                                                                                                                                                                                                                    
+             "4bc930ea-0d4a-4cd0-b22b-43577baef2f0"                                                                                                                                                                                          
+           ],                                                                                                                                                                                                                                
+           "_links": {                                                                                                                                                                                                                       
+             "self": {                                                                                                                                                                                                                       
+               "href": "deletes/distributioncentre/20170911T105449",                                                                                                                                                                                       
+               "method": "GET"                                                                                                                                                                                                               
+             }                                                                                                                                                                                                                               
+           }                                                                                                                                                                                                                                 
+         } 
+
 ## /deletes/site/{timestamp}
 
 Returns a collection of all site data deleted on the server after a given date.
@@ -833,6 +909,97 @@ Returns a collection of all site data deleted on the server after a given date.
            "_links": {                                                                                                                                                                                                                       
              "self": {                                                                                                                                                                                                                       
                "href": "deletes/site/20170911T105449",                                                                                                                                                                                       
+               "method": "GET"                                                                                                                                                                                                               
+             }                                                                                                                                                                                                                               
+           }                                                                                                                                                                                                                                 
+         } 
+
+## /deletes/siteroute/{timestamp}
+
+Returns a collection of all site route data deleted on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+
++ Request (application/hal+json)
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/hal+json)
+
+         {                                                                                                                                                                                                                                   
+           "totalResults": 1,                                                                                                                                                                                                                
+           "_embedded": [                                                                                                                                                                                                                    
+             "4bc930ea-0d4a-4cd0-b22b-43577baef2f0"                                                                                                                                                                                          
+           ],                                                                                                                                                                                                                                
+           "_links": {                                                                                                                                                                                                                       
+             "self": {                                                                                                                                                                                                                       
+               "href": "deletes/siteroute/20170911T105449",                                                                                                                                                                                       
+               "method": "GET"                                                                                                                                                                                                               
+             }                                                                                                                                                                                                                               
+           }                                                                                                                                                                                                                                 
+         } 
+
+## /deletes/user/{timestamp}
+
+Returns a collection of all user data deleted on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+
++ Request (application/hal+json)
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/hal+json)
+
+         {                                                                                                                                                                                                                                   
+           "totalResults": 1,                                                                                                                                                                                                                
+           "_embedded": [                                                                                                                                                                                                                    
+             "4bc930ea-0d4a-4cd0-b22b-43577baef2f0"                                                                                                                                                                                          
+           ],                                                                                                                                                                                                                                
+           "_links": {                                                                                                                                                                                                                       
+             "self": {                                                                                                                                                                                                                       
+               "href": "deletes/siteroute/20170911T105449",                                                                                                                                                                                       
+               "method": "GET"                                                                                                                                                                                                               
+             }                                                                                                                                                                                                                               
+           }                                                                                                                                                                                                                                 
+         } 
+
+
+## /deletes/device/{timestamp}
+
+Returns a collection of all device data deleted on the server after a given date.
+
+### Get by timestamp [GET]
+
++ Parameters
+    + timestamp (datetime) - timestamp of latest local change
+
++ Request (application/hal+json)
+
+    + Headers
+
+            Authorization: Bearer BEARER-TOKEN-FROM-AUTHN-API
+
++ Response 200 (application/hal+json)
+
+         {                                                                                                                                                                                                                                   
+           "totalResults": 1,                                                                                                                                                                                                                
+           "_embedded": [                                                                                                                                                                                                                    
+             "4bc930ea-0d4a-4cd0-b22b-43577baef2f0"                                                                                                                                                                                          
+           ],                                                                                                                                                                                                                                
+           "_links": {                                                                                                                                                                                                                       
+             "self": {                                                                                                                                                                                                                       
+               "href": "deletes/device/20170911T105449",                                                                                                                                                                                       
                "method": "GET"                                                                                                                                                                                                               
              }                                                                                                                                                                                                                               
            }                                                                                                                                                                                                                                 
