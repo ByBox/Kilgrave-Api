@@ -1005,8 +1005,45 @@ Returns a collection of all device data deleted on the server after a given date
            }                                                                                                                                                                                                                                 
          } 
 
-
 # Group Data Structures
+
+## Role (enum[string])
++ Members
+    + `Warehouse`
+    + `TrunkDriver`
+    + `RouteDriver`
+    + `DCSupervisor`
+    + `ITAdmin`
+
+## User (object)
+
++ id: `4bc930ea-0d4a-4cd0-b22b-43577baef2f0` (string)
+
+    The ID of the user.
+
++ loginId: `999999` (int)
+
+    The login id of the user.
+
++ pin: `999999` (int)
+
+    The pin of the user.
+
++ forename: `Kilgrave` (int)
+
+    The users forename.
+
++ surname: `User` (int)
+
+    The users surname.
+
++ roles: (array[Role])
+
+    The roles the user belongs to.
+
++ lastModified: `2017-06-16 16:22:53.020` (datetime)
+
+    The datetime the site route was last modified.
 
 ## Device (object)
 
